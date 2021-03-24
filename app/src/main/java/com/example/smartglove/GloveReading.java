@@ -3,16 +3,14 @@ package com.example.smartglove;
 public class GloveReading {
 
     public Flex flex;
-    public Accel thumbAccel, pointerAccel, middleAccel;
-    public Gyro thumbGyro, pointerGyro, middleGyro;
+    public Accel palmAccel, pointerAccel;
+    public Gyro palmGyro, pointerGyro;
 
-    public GloveReading(Flex flex, Accel thumbAccel, Accel pointerAccel, Accel middleAccel, Gyro thumbGyro, Gyro pointerGyro, Gyro middleGyro) {
+    public GloveReading(Flex flex, Accel palmAccel, Accel pointerAccel, Gyro palmGyro, Gyro pointerGyro) {
         this.flex = flex;
-        this.thumbAccel = thumbAccel;
         this.pointerAccel = pointerAccel;
-        this.middleAccel = middleAccel;
-        this.thumbGyro = thumbGyro;
+        this.palmAccel = palmAccel;
         this.pointerGyro = pointerGyro;
-        this.middleGyro = middleGyro;
+        this.palmGyro = palmGyro;
     }
 }
