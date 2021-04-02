@@ -8,11 +8,37 @@ import android.bluetooth.BluetoothSocket;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
 public class SmartGloveApplication extends Application {
 
     static final UUID mUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+
+    public HashMap<String,SignLetter> signLetters;
+
+    BluetoothSocket socket;
+
+    public SmartGloveApplication() {
+        super();
+        signLetters = new HashMap<>();
+        makeSignLetters();
+    }
+
+    private void makeSignLetters() {
+        ArrayList<Integer> imageIDs = new ArrayList<>();
+        imageIDs.add(R.drawable.a);
+        imageIDs.add(R.drawable.b);
+
+        System.out.println(imageIDs);
+
+        for(int i = 0; i < imageIDs.size(); i++) {
+            int id = 65+i;
+            String key = Character.toString((char)id);
+            signLetters.put(key, new SignLetter(id,imageIDs.get(i)));
+        }
+    }
 
     public void connectBluetooth() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -20,7 +46,7 @@ public class SmartGloveApplication extends Application {
         BluetoothDevice hc05 = bluetoothAdapter.getRemoteDevice("hard code address");
 
         //socket code
-        BluetoothSocket socket = null;
+        socket = null;
         try {
             socket = hc05.createRfcommSocketToServiceRecord(mUUID);
             socket.connect();
@@ -30,7 +56,7 @@ public class SmartGloveApplication extends Application {
         }
     }
 
-    public GloveReading readGlove(BluetoothSocket socket) {
+    public GloveReading readGlove() {
         InputStream inputStream = null;
         OutputStream outputStream = null;
         try {
@@ -56,7 +82,8 @@ public class SmartGloveApplication extends Application {
         return null;
     }
 
-    public SignLetter determineLetter(GloveReading glove) {
+    public SignLetter determineLetter() {
+        GloveReading glove = readGlove();
         return null;
     }
 

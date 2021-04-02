@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToBluetooth(View view) {
-        Intent myIntent = new Intent(this,BluetoothActivity.class);
+        Intent myIntent = new Intent(this,LearningActivity.class);
         startActivity(myIntent);
     }
 }

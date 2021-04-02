@@ -4,9 +4,11 @@ public class SignLetter {
 
     //0-25, A=0, B=1, ... Z=25
     int letterID;
+    public int imageID;
 
-    public SignLetter(int id) {
+    public SignLetter(int id, int imageID) {
         letterID = id;
+        this.imageID = imageID;
     }
 
     public String getString() {
