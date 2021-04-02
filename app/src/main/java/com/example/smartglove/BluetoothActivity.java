@@ -33,6 +33,9 @@ public class BluetoothActivity extends AppCompatActivity {
 
     public void updateValue(View view) {
         app.connectBluetooth();
+
+        app.readGlove();
+
         TextView valueBox = findViewById(R.id.valueBox);
         valueBox.setText("hello");
     }

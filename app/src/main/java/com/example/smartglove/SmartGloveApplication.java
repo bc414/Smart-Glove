@@ -50,9 +50,9 @@ public class SmartGloveApplication extends Application {
         try {
             socket = hc05.createRfcommSocketToServiceRecord(mUUID);
             socket.connect();
-
+            System.out.println("SOCKET WORKS!!!!!!!!!!!!!!!!!!!");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("SOCKET DIDN'T WORK!!!!!!!!!!");
         }
     }
 
@@ -68,16 +68,20 @@ public class SmartGloveApplication extends Application {
                 result.append((char) inputStream.read());
             }
             String data = result.toString();
+            System.out.println("THE STRING FROM THE HC05: " + data);
+
+            /*
             String[] lines = data.split(" ");
             double[] values = new double[lines.length];
             for(int i = 0; i < values.length; i++) {
                 values[i] = Double.parseDouble(lines[i]);
-            }
+            }*/
 
-            return new GloveReading(new Flex(values[0],values[1],values[2],values[3],values[4]), new Accel(values[5],values[6],values[7]), new Accel(values[8],values[9],values[10]), new Gyro(values[11],values[12],values[13]), new Gyro(values[14],values[15],values[17]));
+            return null;
+            //return new GloveReading(new Flex(values[0],values[1],values[2],values[3],values[4]), new Accel(values[5],values[6],values[7]), new Accel(values[8],values[9],values[10]), new Gyro(values[11],values[12],values[13]), new Gyro(values[14],values[15],values[17]));
         }
         catch(IOException e) {
-            e.printStackTrace();
+            System.out.println("READ GLOVE DIDN'T WORK!!!!!!!!!!!!!!");
         }
         return null;
     }
