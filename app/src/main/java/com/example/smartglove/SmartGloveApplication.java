@@ -43,7 +43,7 @@ public class SmartGloveApplication extends Application {
     public void connectBluetooth() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         System.out.println(bluetoothAdapter.getBondedDevices());
-        BluetoothDevice hc05 = bluetoothAdapter.getRemoteDevice("hard code address");
+        BluetoothDevice hc05 = bluetoothAdapter.getRemoteDevice("98:D3:71:FD:F7:6A");
 
         //socket code
         socket = null;
