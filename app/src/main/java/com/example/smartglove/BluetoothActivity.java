@@ -31,6 +31,10 @@ public class BluetoothActivity extends AppCompatActivity {
         startActivity(myIntent);
     }
 
+    public void requestData(View view) {
+        app.request();
+    }
+
     public void connect(View view) {
         app.connectBluetooth();
     }

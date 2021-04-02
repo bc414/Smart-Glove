@@ -21,6 +21,7 @@ public class SmartGloveApplication extends Application {
 
     BluetoothSocket socket;
 
+
     public SmartGloveApplication() {
         super();
         signLetters = new HashMap<>();
@@ -65,13 +66,21 @@ public class SmartGloveApplication extends Application {
         }
     }
 
+    public void request() {
+        try {
+            OutputStream outputStream = socket.getOutputStream();
+            outputStream.write(22);
+        }
+        catch(IOException e) {
+            System.out.println("REQUEST DIDN'T WORK!!!!!");
+        }
+    }
+
     public GloveReading readGlove() {
         InputStream inputStream = null;
-        OutputStream outputStream = null;
         try {
             inputStream = socket.getInputStream();
-            outputStream = socket.getOutputStream();
-            outputStream.write(22);
+
             StringBuilder result = new StringBuilder();
             System.out.println("NUMBER OF BYTES AVAILABLE: " + inputStream.available());
             while(inputStream.available() > 0) {
