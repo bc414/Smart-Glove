@@ -4,6 +4,7 @@ import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.os.ParcelUuid;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,14 +43,20 @@ public class SmartGloveApplication extends Application {
 
     public void connectBluetooth() {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
         System.out.println(bluetoothAdapter.getBondedDevices());
         BluetoothDevice hc05 = bluetoothAdapter.getRemoteDevice("98:D3:71:FD:F7:6A");
+
+        ParcelUuid list[] = hc05.getUuids();
+
+        UUID uuid = UUID.fromString(list[0].toString());
+        System.out.println("UUID FROM THE HC05: " + uuid);
 
         System.out.println("HC05 OBJECT: " + hc05);
         //socket code
         socket = null;
         try {
-            socket = hc05.createRfcommSocketToServiceRecord(mUUID);
+            socket = hc05.createRfcommSocketToServiceRecord(uuid);
             System.out.println("SOCKET OBJECT: " + socket);
             socket.connect();
             System.out.println("SOCKET WORKS!!!!!!!!!!!!!!!!!!!");
