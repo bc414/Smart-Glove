@@ -45,10 +45,12 @@ public class SmartGloveApplication extends Application {
         System.out.println(bluetoothAdapter.getBondedDevices());
         BluetoothDevice hc05 = bluetoothAdapter.getRemoteDevice("98:D3:71:FD:F7:6A");
 
+        System.out.println("HC05 OBJECT: " + hc05);
         //socket code
         socket = null;
         try {
             socket = hc05.createRfcommSocketToServiceRecord(mUUID);
+            System.out.println("SOCKET OBJECT: " + socket);
             socket.connect();
             System.out.println("SOCKET WORKS!!!!!!!!!!!!!!!!!!!");
         } catch (IOException e) {
