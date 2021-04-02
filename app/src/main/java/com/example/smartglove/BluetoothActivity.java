@@ -15,12 +15,14 @@ import java.util.UUID;
 
 public class BluetoothActivity extends AppCompatActivity {
 
+    SmartGloveApplication app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth);
 
+        app = ((SmartGloveApplication)this.getApplication());
 
     }
 
@@ -30,6 +32,7 @@ public class BluetoothActivity extends AppCompatActivity {
     }
 
     public void updateValue(View view) {
+        app.connectBluetooth();
         TextView valueBox = findViewById(R.id.valueBox);
         valueBox.setText("hello");
     }
