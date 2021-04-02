@@ -31,8 +31,11 @@ public class BluetoothActivity extends AppCompatActivity {
         startActivity(myIntent);
     }
 
-    public void updateValue(View view) {
+    public void connect(View view) {
         app.connectBluetooth();
+    }
+
+    public void test(View view) {
 
         app.readGlove();
 
