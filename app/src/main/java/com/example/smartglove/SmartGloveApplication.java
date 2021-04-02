@@ -73,6 +73,7 @@ public class SmartGloveApplication extends Application {
             outputStream = socket.getOutputStream();
             outputStream.write(22);
             StringBuilder result = new StringBuilder();
+            System.out.println("NUMBER OF BYTES AVAILABLE: " + inputStream.available());
             while(inputStream.available() > 0) {
                 result.append((char) inputStream.read());
             }
