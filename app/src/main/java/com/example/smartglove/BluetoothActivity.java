@@ -41,10 +41,17 @@ public class BluetoothActivity extends AppCompatActivity {
 
     public void test(View view) {
 
-        app.readGlove();
+        SignLetter letter = app.determineLetter();
+        String text;
+        if(letter == null) {
+            text = "No match";
+        }
+        else {
+            text = letter.getString();
+        }
 
         TextView valueBox = findViewById(R.id.valueBox);
-        valueBox.setText("hello");
+        valueBox.setText(text);
     }
 
 
