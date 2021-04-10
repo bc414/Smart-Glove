@@ -184,8 +184,9 @@ public class SmartGloveApplication extends Application {
             String data = result.toString();
             System.out.println("THE STRING FROM THE HC05: " + data);
 
+            String data2 = data.replaceAll(" +"," ");
 
-            String[] lines = data.split(" ");
+            String[] lines = data2.split(" ");
             double[] values = new double[lines.length];
             for(int i = 0; i < values.length; i++) {
                 values[i] = Double.parseDouble(lines[i]);
