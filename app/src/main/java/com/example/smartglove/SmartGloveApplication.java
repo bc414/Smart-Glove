@@ -189,11 +189,12 @@ public class SmartGloveApplication extends Application {
             String[] lines = data2.split(" ");
             double[] values = new double[lines.length];
             for(int i = 0; i < values.length; i++) {
-                values[i] = Double.parseDouble(lines[i]);
+                System.out.println(lines[i]);
+                //values[i] = Double.parseDouble(lines[i]);
             }
 
-            //return null;
-            return new GloveReading(new Flex(values[0],values[1],values[2],values[3],values[4]), new Accel(values[5],values[6],values[7]), new Accel(values[8],values[9],values[10]), new Gyro(values[11],values[12],values[13]), new Gyro(values[14],values[15],values[17]));
+            return null;
+            //return new GloveReading(new Flex(values[0],values[1],values[2],values[3],values[4]), new Accel(values[5],values[6],values[7]), new Accel(values[8],values[9],values[10]), new Gyro(values[11],values[12],values[13]), new Gyro(values[14],values[15],values[17]));
         }
         catch(IOException e) {
             System.out.println("READ GLOVE DIDN'T WORK!!!!!!!!!!!!!!");
