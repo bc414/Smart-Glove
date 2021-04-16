@@ -174,19 +174,23 @@ public class SmartGloveApplication extends Application {
 
         ParcelUuid list[] = hc05.getUuids();
 
+        try {
+
         UUID uuid = UUID.fromString(list[0].toString());
         System.out.println("UUID FROM THE HC05: " + uuid);
 
         System.out.println("HC05 OBJECT: " + hc05);
         //socket code
         socket = null;
-        try {
+
             socket = hc05.createRfcommSocketToServiceRecord(uuid);
             System.out.println("SOCKET OBJECT: " + socket);
             socket.connect();
             System.out.println("SOCKET WORKS!!!!!!!!!!!!!!!!!!!");
         } catch (IOException e) {
-            System.out.println("SOCKET DIDN'T WORK!!!!!!!!!!");
+            System.out.println("SOCKET DIDN'T WORK!!!!!!!!!! (IO EXCEPTION/SOCKET PROBLEM)");
+        } catch (NullPointerException e) {
+            System.out.println("SOCKET DIDN'T WORK!!!!!!!!!! (NULL POINTER)");
         }
     }
 
@@ -233,6 +237,10 @@ public class SmartGloveApplication extends Application {
             System.out.println("READ GLOVE DIDN'T WORK!!!!!!!!!!!!!!");
         }
         return null;
+    }
+
+    public SignLetter determineLetter() {
+        return determineLetter(readGlove());
     }
 
     public SignLetter determineLetter(GloveReading glove) {
