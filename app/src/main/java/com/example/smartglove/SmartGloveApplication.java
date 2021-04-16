@@ -243,6 +243,9 @@ public class SmartGloveApplication extends Application {
         catch(NullPointerException e) {
             System.out.println("NULL POINTER. YOU PROBABLY DON'T HAVE A WORKING SOCKET!");
         }
+        catch(NumberFormatException e) {
+            System.out.println("STRING CAN'T BECOME INTEGER");
+        }
         return null;
     }
 
