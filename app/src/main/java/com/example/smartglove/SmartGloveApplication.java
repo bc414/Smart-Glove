@@ -220,7 +220,7 @@ public class SmartGloveApplication extends Application {
             System.out.println("THE STRING FROM THE HC05: " + data);
 
             //replace multiple spaces with a single space and trim off beginning and trailing spaces so that the split function works
-            String data2 = data.replaceAll(" +"," ").trim();
+            String data2 = data.trim().replaceAll(" +"," ");
 
             //turn the string into an array of strings then convert to integers
             String[] lines = data2.split(" ");

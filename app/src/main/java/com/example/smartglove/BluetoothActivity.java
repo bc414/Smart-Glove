@@ -66,12 +66,13 @@ public class BluetoothActivity extends AppCompatActivity {
     public void test(View view) {
 
         try {
-            if(app.readGlove().flex == null) {
+            GloveReading gl = app.readGlove();
+            if(gl.flex == null) {
                 TextView valueBox = findViewById(R.id.valueBox);
                 valueBox.setText("You need to request data first.");
                 return;
             }
-            SignLetter letter = app.determineLetter();
+            SignLetter letter = app.determineLetter(gl);
             String text;
             if(letter == null) {
                 text = "No match";
