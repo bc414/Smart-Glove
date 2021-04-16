@@ -6,10 +6,10 @@ public class FlexMapping {
 
     class Threshold {
         public int id;
-        public double low;
-        public double high;
+        public int low;
+        public int high;
 
-        public Threshold(int id, double low, double high) {
+        public Threshold(int id, int low, int high) {
             this.id = id;
             this.low = low;
             this.high = high;
@@ -22,7 +22,7 @@ public class FlexMapping {
         thresholds = new ArrayList<>();
     }
 
-    public void addThreshold(int id, double low, double high) {
+    public void addThreshold(int id, int low, int high) {
         thresholds.add(new Threshold(id, low, high));
     }
 
@@ -31,7 +31,7 @@ public class FlexMapping {
      * @param value
      * @return
      */
-    public int evaluate(double value) {
+    public int evaluate(int value) {
         for(Threshold threshold : thresholds) {
             if(value > threshold.low && value < threshold.high) {
                 return threshold.id;

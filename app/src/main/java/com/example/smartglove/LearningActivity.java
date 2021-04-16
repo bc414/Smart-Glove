@@ -39,7 +39,7 @@ public class LearningActivity extends AppCompatActivity {
     }
 
     public void testGlove(View view) {
-        SignLetter letter = app.determineLetter();
+        SignLetter letter = app.determineLetter(app.readGlove());
     }
 
 }

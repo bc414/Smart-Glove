@@ -45,7 +45,7 @@ public class BluetoothActivity extends AppCompatActivity {
 
     public void test(View view) {
 
-        SignLetter letter = app.determineLetter();
+        SignLetter letter = app.determineLetter(app.readGlove());
         String text;
         if(letter == null) {
             text = "No match";
@@ -58,5 +58,16 @@ public class BluetoothActivity extends AppCompatActivity {
         valueBox.setText(text);
     }
 
+    public void updateSideGyro(View view) {
+        app.savedSideGyro = app.readGlove().palmGyro;
+    }
+
+    public void updateUpGyro(View view) {
+        app.savedUpGyro = app.readGlove().palmGyro;
+    }
+
+    public void updateDownGyro(View view) {
+        app.savedDownGyro = app.readGlove().palmGyro;
+    }
 
 }

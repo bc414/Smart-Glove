@@ -12,7 +12,10 @@ public class SignLetter {
     }
 
     public String getString() {
-        char letter = (char)(65 + letterID); //65 is the ASCII code for capital A
+        if(letterID==0) {
+            return "None";
+        }
+        char letter = (char)(letterID); //65 is the ASCII code for capital A
         return Character.toString(letter);
     }
 
