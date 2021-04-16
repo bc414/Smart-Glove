@@ -230,11 +230,18 @@ public class SmartGloveApplication extends Application {
                 values[i] = Integer.parseInt(lines[i]);
             }
 
+            if(values.length != 17) {
+                return new GloveReading(null,null,null,null,null);
+            }
+
             //return null;
             return new GloveReading(new Flex(values[0],values[1],values[2],values[3],values[4]), new Accel(values[5],values[6],values[7]), new Accel(values[8],values[9],values[10]), new Gyro(values[11],values[12],values[13]), new Gyro(values[14],values[15],values[16]));
         }
         catch(IOException e) {
             System.out.println("READ GLOVE DIDN'T WORK!!!!!!!!!!!!!!");
+        }
+        catch(NullPointerException e) {
+            System.out.println("NULL POINTER. YOU PROBABLY DON'T HAVE A WORKING SOCKET!");
         }
         return null;
     }
@@ -245,25 +252,30 @@ public class SmartGloveApplication extends Application {
 
     public SignLetter determineLetter(GloveReading glove) {
 
-        int thumbRegion = thumb.evaluate(glove.flex.thumb);
-        int pointerRegion = pointer.evaluate(glove.flex.pointer);
-        int middleRegion = middle.evaluate(glove.flex.middle);
-        int ringRegion = ring.evaluate(glove.flex.ring);
-        int pinkieRegion = pinkie.evaluate(glove.flex.pinkie);
+        try {
+            int thumbRegion = thumb.evaluate(glove.flex.thumb);
+            int pointerRegion = pointer.evaluate(glove.flex.pointer);
+            int middleRegion = middle.evaluate(glove.flex.middle);
+            int ringRegion = ring.evaluate(glove.flex.ring);
+            int pinkieRegion = pinkie.evaluate(glove.flex.pinkie);
 
-        String orientation = determineOrientation(glove.palmGyro);
+            String orientation = determineOrientation(glove.palmGyro);
 
-        for(LetterMapping letterMapping : letterMappings) {
-            if(letterMapping.thumb == thumbRegion && letterMapping.pointer == pointerRegion && letterMapping.middle == middleRegion && letterMapping.ring == ringRegion && letterMapping.pinkie == pinkieRegion) {
-                if(letterMapping.direction.equals("None")) {
-                    return signLetters.get(letterMapping.letter);
-                }
-                else {
-                    if(letterMapping.direction.equals(orientation)) {
+            for (LetterMapping letterMapping : letterMappings) {
+                if (letterMapping.thumb == thumbRegion && letterMapping.pointer == pointerRegion && letterMapping.middle == middleRegion && letterMapping.ring == ringRegion && letterMapping.pinkie == pinkieRegion) {
+                    if (letterMapping.direction.equals("None")) {
                         return signLetters.get(letterMapping.letter);
+                    } else {
+                        if (letterMapping.direction.equals(orientation)) {
+                            return signLetters.get(letterMapping.letter);
+                        }
                     }
                 }
             }
+        }
+        catch(NullPointerException e) {
+            System.out.println("GLOVE READING IS NULL!");
+            return signLetters.get("None");
         }
 
         return signLetters.get("None");
