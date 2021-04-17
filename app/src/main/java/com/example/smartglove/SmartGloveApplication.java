@@ -39,6 +39,17 @@ public class SmartGloveApplication extends Application {
             this.pinkie = pinkie;
             this.direction = direction;
         }
+
+        public boolean equals(Object other) {
+            if(!(other instanceof LetterMapping)) {
+                return false;
+            }
+            LetterMapping o = (LetterMapping)other;
+            if(this.thumb == o.thumb && this.pointer == o.pointer && this.middle == o.middle && this.ring == o.ring && this.pinkie == o.pinkie) {
+                return true;
+            }
+            return false;
+        }
     }
 
     static final UUID mUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -73,77 +84,95 @@ public class SmartGloveApplication extends Application {
         //arduino analog pin readings have 10 bit resolution, so there are 1024 values (2^10)
         //values range from 0 to 1023 with low values meaning straight and high values meaning bent
         thumb = new FlexMapping();
-        thumb.addThreshold(1,0,10);
-        thumb.addThreshold(2,0,0);
-        thumb.addThreshold(3,0,0);
-        thumb.addThreshold(4,10,20);
-        thumb.addThreshold(5,0,0);
-        thumb.addThreshold(6,0,0);
-        thumb.addThreshold(7,0,0);
+        thumb.addThreshold(1,328,1023);
+        thumb.addThreshold(2,235,270);
+        thumb.addThreshold(3,300,328);
+        thumb.addThreshold(4,0,235);
+        thumb.addThreshold(5,270,300);
 
         pointer = new FlexMapping();
-        pointer.addThreshold(1,10,20);
-        pointer.addThreshold(2,0,0);
-        pointer.addThreshold(3,0,0);
-        pointer.addThreshold(4,0,0);
-        pointer.addThreshold(5,0,0);
-        pointer.addThreshold(6,0,10);
-        pointer.addThreshold(7,0,0);
+        pointer.addThreshold(1,372,1023);
+        pointer.addThreshold(2,0, 286);
+        pointer.addThreshold(3,286,372);
+
 
         middle = new FlexMapping();
-        middle.addThreshold(1,10,20);
-        middle.addThreshold(2,0,0);
-        middle.addThreshold(3,0,0);
-        middle.addThreshold(4,0,0);
-        middle.addThreshold(5,0,0);
-        middle.addThreshold(6,0,10);
-        middle.addThreshold(7,0,0);
+        middle.addThreshold(1,356,1023); //straight
+        middle.addThreshold(2,222,250); //2 and 5
+        middle.addThreshold(3,276,356);
+        middle.addThreshold(4,0,222); //full curl
+        middle.addThreshold(6,250,276);
 
         ring = new FlexMapping();
-        ring.addThreshold(1,10,20);
-        ring.addThreshold(2,0,0);
-        ring.addThreshold(3,0,0);
-        ring.addThreshold(4,0,0);
-        ring.addThreshold(5,0,0);
-        ring.addThreshold(6,0,10);
-        ring.addThreshold(7,0,0);
+        ring.addThreshold(1,383,1023);
+        ring.addThreshold(2,217,282); //2, 5, and 6
+        ring.addThreshold(3,282,383);
+        ring.addThreshold(4,0,217);
 
         pinkie = new FlexMapping();
-        pinkie.addThreshold(1,10,20);
-        pinkie.addThreshold(2,0,0);
-        pinkie.addThreshold(3,0,0);
-        pinkie.addThreshold(4,0,0);
-        pinkie.addThreshold(5,0,0);
-        pinkie.addThreshold(6,0,10);
-        pinkie.addThreshold(7,0,0);
+        pinkie.addThreshold(1,352,1023);
+        pinkie.addThreshold(2,240,267); //2, 5
+        pinkie.addThreshold(3,290,352);
+        pinkie.addThreshold(4,0,240);
+        pinkie.addThreshold(6,267,290);
 
         //The letter mappings describe what position each finger should be in
-        letterMappings = new ArrayList<>();
-        letterMappings.add(new LetterMapping("A",1,6,6,6,6));
+        /*letterMappings = new ArrayList<>();
+        letterMappings.add(new LetterMapping("A",1,3,6,2,6));
         letterMappings.add(new LetterMapping("B", 4, 1, 1, 1, 1));
         letterMappings.add(new LetterMapping("C", 2, 2, 2, 2, 2));
         letterMappings.add(new LetterMapping("D", 1, 1, 3, 3, 3));
-        letterMappings.add(new LetterMapping("E", 4, 4, 4, 4, 4));
+        letterMappings.add(new LetterMapping("E", 4, 2, 4, 4, 4));
         letterMappings.add(new LetterMapping("F",2,3,1,1,1));
         letterMappings.add(new LetterMapping("G",1,1,4,4,4,"Side"));
         letterMappings.add(new LetterMapping("H",5,1,1,4,4,"Side"));
-        letterMappings.add(new LetterMapping("I",2,6,6,6,1));
-        letterMappings.add(new LetterMapping("J",2,6,6,6,1));
-        letterMappings.add(new LetterMapping("K",1,1,1,6,5));
-        letterMappings.add(new LetterMapping("L",1,1,6,6,6));
-        letterMappings.add(new LetterMapping("M",4,5,5,5,5));
-        letterMappings.add(new LetterMapping("N",5,5,5,6,6));
-        letterMappings.add(new LetterMapping("O",5,5,5,5,5));
-        letterMappings.add(new LetterMapping("P",1,1,1,6,5,"Down"));
-        letterMappings.add(new LetterMapping("Q",1,1,5,5,5,"Down"));
-        letterMappings.add(new LetterMapping("R",1,1,5,5,7));
-        letterMappings.add(new LetterMapping("S",4,4,4,4,4));
-        letterMappings.add(new LetterMapping("T",2,2,6,6,6));
+        letterMappings.add(new LetterMapping("I",2,3,6,2,1));
+        letterMappings.add(new LetterMapping("J",2,3,6,2,1));
+        letterMappings.add(new LetterMapping("K",1,1,1,2,2));
+        letterMappings.add(new LetterMapping("L",1,1,6,2,6));
+        letterMappings.add(new LetterMapping("M",4,2,2,2,2));
+        letterMappings.add(new LetterMapping("N",5,2,2,2,6));
+        letterMappings.add(new LetterMapping("O",5,2,5,5,2));
+        letterMappings.add(new LetterMapping("P",1,1,1,2,2,"Down"));
+        letterMappings.add(new LetterMapping("Q",1,1,2,2,2,"Down"));
+        letterMappings.add(new LetterMapping("R",1,1,2,2,7));
+        letterMappings.add(new LetterMapping("S",4,2,4,4,4));
+        letterMappings.add(new LetterMapping("T",2,2,6,2,6));
         letterMappings.add(new LetterMapping("U",4,1,1,4,4));
         letterMappings.add(new LetterMapping("V",4,1,1,4,4));
         letterMappings.add(new LetterMapping("W",4,1,1,1,4));
-        letterMappings.add(new LetterMapping("X",4,7,4,4,4));
-        letterMappings.add(new LetterMapping("Y",1,6,6,6,1));
+        letterMappings.add(new LetterMapping("X",4,2,4,4,4));
+        letterMappings.add(new LetterMapping("Y",1,3,6,2,1));
+        letterMappings.add(new LetterMapping("Z",4,1,4,4,4));*/
+
+        //Gary method
+        //put the measurements for each letter then later we compare to find closest
+        letterMappings = new ArrayList<>();
+        letterMappings.add(new LetterMapping("A",1,3,6,2,6));
+        letterMappings.add(new LetterMapping("B", 4, 1, 1, 1, 1));
+        letterMappings.add(new LetterMapping("C", 2, 2, 2, 2, 2));
+        letterMappings.add(new LetterMapping("D", 1, 1, 3, 3, 3));
+        letterMappings.add(new LetterMapping("E", 4, 2, 4, 4, 4));
+        letterMappings.add(new LetterMapping("F",2,3,1,1,1));
+        letterMappings.add(new LetterMapping("G",1,1,4,4,4,"Side"));
+        letterMappings.add(new LetterMapping("H",5,1,1,4,4,"Side"));
+        letterMappings.add(new LetterMapping("I",2,3,6,2,1));
+        letterMappings.add(new LetterMapping("J",2,3,6,2,1));
+        letterMappings.add(new LetterMapping("K",1,1,1,2,2));
+        letterMappings.add(new LetterMapping("L",1,1,6,2,6));
+        letterMappings.add(new LetterMapping("M",4,2,2,2,2));
+        letterMappings.add(new LetterMapping("N",5,2,2,2,6));
+        letterMappings.add(new LetterMapping("O",5,2,5,5,2));
+        letterMappings.add(new LetterMapping("P",1,1,1,2,2,"Down"));
+        letterMappings.add(new LetterMapping("Q",1,1,2,2,2,"Down"));
+        letterMappings.add(new LetterMapping("R",1,1,2,2,7));
+        letterMappings.add(new LetterMapping("S",4,2,4,4,4));
+        letterMappings.add(new LetterMapping("T",2,2,6,2,6));
+        letterMappings.add(new LetterMapping("U",4,1,1,4,4));
+        letterMappings.add(new LetterMapping("V",4,1,1,4,4));
+        letterMappings.add(new LetterMapping("W",4,1,1,1,4));
+        letterMappings.add(new LetterMapping("X",4,2,4,4,4));
+        letterMappings.add(new LetterMapping("Y",1,3,6,2,1));
         letterMappings.add(new LetterMapping("Z",4,1,4,4,4));
     }
 
@@ -256,6 +285,7 @@ public class SmartGloveApplication extends Application {
     public SignLetter determineLetter(GloveReading glove) {
 
         try {
+            /*
             int thumbRegion = thumb.evaluate(glove.flex.thumb);
             int pointerRegion = pointer.evaluate(glove.flex.pointer);
             int middleRegion = middle.evaluate(glove.flex.middle);
@@ -274,14 +304,30 @@ public class SmartGloveApplication extends Application {
                         }
                     }
                 }
+            }*/
+
+            //Gary method
+            LetterMapping closest = null;
+            int smallestDifference = Integer.MAX_VALUE;
+            for(LetterMapping letterMapping : letterMappings) {
+                int difference = Math.abs(letterMapping.thumb - glove.flex.thumb)
+                        + Math.abs(letterMapping.pointer - glove.flex.pointer)
+                        + Math.abs(letterMapping.middle - glove.flex.middle)
+                        + Math.abs(letterMapping.ring - glove.flex.ring)
+                        + Math.abs(letterMapping.pinkie - glove.flex.pinkie);
+                if(difference < smallestDifference) {
+                    smallestDifference = difference;
+                    closest = letterMapping;
+                }
             }
+            return signLetters.get(closest.letter);
         }
         catch(NullPointerException e) {
             System.out.println("GLOVE READING IS NULL!");
             return signLetters.get("None");
         }
 
-        return signLetters.get("None");
+        //return signLetters.get("None");
     }
 
     public String determineOrientation(Gyro palmGyro) {

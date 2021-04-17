@@ -2,9 +2,24 @@ package com.example.smartglove;
 
 import junit.framework.TestCase;
 
+import java.util.ArrayList;
+
 public class SmartGloveApplicationTest extends TestCase {
 
     public void testConnectBluetooth() {
+        SmartGloveApplication app = new SmartGloveApplication();
+        int p1 = 0;
+        int p2 = 0;
+        for(int i = 0; i < app.letterMappings.size(); i++) {
+            for(int j = 0; j < app.letterMappings.size(); j++) {
+                if(app.letterMappings.get(i).equals(app.letterMappings.get(j))) {
+                    if(i != j) {
+                        System.out.println(i + " " + j);
+                    }
+                }
+            }
+        }
+        assertTrue(true);
     }
 
     public void testGyroDistance() {
@@ -26,5 +41,9 @@ public class SmartGloveApplicationTest extends TestCase {
         GloveReading mockGlove = new GloveReading(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
         SignLetter letter = app.determineLetter(mockGlove);
         assertEquals("None",letter.getString());
+    }
+
+    public void findDuplicateMappings() {
+
     }
 }

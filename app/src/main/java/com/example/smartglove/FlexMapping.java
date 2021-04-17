@@ -33,7 +33,7 @@ public class FlexMapping {
      */
     public int evaluate(int value) {
         for(Threshold threshold : thresholds) {
-            if(value > threshold.low && value < threshold.high) {
+            if(value >= threshold.low && value <= threshold.high) {
                 return threshold.id;
             }
         }
