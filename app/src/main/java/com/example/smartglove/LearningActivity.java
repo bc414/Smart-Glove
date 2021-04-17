@@ -48,7 +48,31 @@ public class LearningActivity extends AppCompatActivity {
             }, 2000);  //the time is in miliseconds
         }
 
+        //testing purposes only
+        /*ImageView imageView = findViewById(R.id.imageView);
+        imageView.setOnClickListener(new Click("A"));*/
+
     }
+
+    /*
+    class Click implements View.OnClickListener {
+
+        String letter;
+
+        public Click(String letter) {
+            this.letter = letter;
+        }
+
+        public void onClick(View v) {
+            goToLearning(letter);
+        }
+    }
+
+    public void goToLearning(String letter) {
+        Intent myIntent = new Intent(this, MainActivity.class);
+        myIntent.putExtra("letter", letter);
+        startActivity(myIntent);
+    }*/
 
     public void getNextLetter(View view) {
         ImageView imageView = findViewById(R.id.imageView);
