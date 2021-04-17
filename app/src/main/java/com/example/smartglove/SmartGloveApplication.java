@@ -95,7 +95,6 @@ public class SmartGloveApplication extends Application {
         pointer.addThreshold(2,0, 286);
         pointer.addThreshold(3,286,372);
 
-
         middle = new FlexMapping();
         middle.addThreshold(1,356,1023); //straight
         middle.addThreshold(2,222,250); //2 and 5

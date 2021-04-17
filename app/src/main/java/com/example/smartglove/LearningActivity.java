@@ -2,7 +2,9 @@ package com.example.smartglove;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -26,6 +28,26 @@ public class LearningActivity extends AppCompatActivity {
         letterOrder = new ArrayList<>(app.signLetters.keySet());
         Collections.shuffle(letterOrder);
         position = 0;
+
+        String mode = getIntent().getStringExtra("mode");
+
+        if(mode.equals("learning")) {
+
+        }
+        else if(mode.equals("quizzes")) {
+
+        }
+        else if(mode.equals("interpret")) {
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    interpret();
+                    handler.postDelayed(this, 2000);
+                }
+            }, 2000);  //the time is in miliseconds
+        }
+
     }
 
     public void getNextLetter(View view) {
@@ -35,6 +57,18 @@ public class LearningActivity extends AppCompatActivity {
             position = 0;
         }
         SignLetter letter = app.signLetters.get(letterOrder.get(position));
+        imageView.setImageResource(letter.imageID);
+    }
+
+    public void goToMenu(View view) {
+        Intent myIntent = new Intent(this,MainActivity.class);
+        startActivity(myIntent);
+    }
+
+    public void interpret() {
+        System.out.println("INTERPRETING!");
+        ImageView imageView = findViewById(R.id.imageView);
+        SignLetter letter = app.determineLetter();
         imageView.setImageResource(letter.imageID);
     }
 
