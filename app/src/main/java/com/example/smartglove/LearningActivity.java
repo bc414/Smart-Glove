@@ -76,6 +76,7 @@ public class LearningActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    System.out.println("REQUEST CALL!");
                     app.request();
                     handler.postDelayed(this, 2000);
                 }
@@ -83,6 +84,7 @@ public class LearningActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    System.out.println("INTERPRET CALL!");
                     interpret();
                     handler.postDelayed(this, 2000);
                 }
@@ -139,7 +141,6 @@ public class LearningActivity extends AppCompatActivity {
     }
 
     public void interpret() {
-        System.out.println("INTERPRETING!");
         ImageView imageView = findViewById(R.id.imageView);
         SignLetter letter = app.determineLetter();
         imageView.setImageResource(letter.imageID);
