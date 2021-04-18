@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DD000000"
     tools:context=".LearningActivity">
 
     <ImageView
@@ -23,6 +24,7 @@
         android:layout_marginBottom="52dp"
         android:onClick="getNextLetter"
         android:text="Next Letter"
+        app:backgroundTint="#36F47C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -30,11 +32,12 @@
 
     <Button
         android:id="@+id/button7"
-        android:onClick="testGlove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
+        android:onClick="testGlove"
         android:text="Test Glove"
+        app:backgroundTint="#36F47C"
         app:layout_constraintBottom_toTopOf="@+id/nextLetter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

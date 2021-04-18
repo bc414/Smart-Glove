@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <application
         android:name=".SmartGloveApplication"
         android:allowBackup="true"
@@ -12,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartGlove">
-        <activity android:name=".LearningActivity"></activity>
+        <activity android:name=".GridviewAlph"></activity>
+        <activity android:name=".LearningActivity" />
         <activity android:name=".BluetoothActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
