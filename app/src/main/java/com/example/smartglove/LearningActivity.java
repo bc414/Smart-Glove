@@ -35,6 +35,7 @@ public class LearningActivity extends AppCompatActivity {
         if(mode.equals("learning")) {
             ImageView imageView = findViewById(R.id.imageView);
             imageView.setVisibility(View.VISIBLE);
+
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -43,11 +44,25 @@ public class LearningActivity extends AppCompatActivity {
                     handler.postDelayed(this, 500);
                 }
             }, 500);  //the time is in miliseconds
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    app.request();
+                    handler.postDelayed(this, 500);
+                }
+            }, 250);  //the time is in miliseconds
         }
         else if(mode.equals("quizzes")) {
             ImageView imageView = findViewById(R.id.imageView);
             imageView.setVisibility(View.INVISIBLE);
             final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    app.request();
+                    handler.postDelayed(this, 500);
+                }
+            }, 250);  //the time is in miliseconds
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -58,6 +73,13 @@ public class LearningActivity extends AppCompatActivity {
         }
         else if(mode.equals("interpret")) {
             final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    app.request();
+                    handler.postDelayed(this, 500);
+                }
+            }, 250);  //the time is in miliseconds
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
