@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,10 +33,28 @@ public class LearningActivity extends AppCompatActivity {
         String mode = getIntent().getStringExtra("mode");
 
         if(mode.equals("learning")) {
-
+            ImageView imageView = findViewById(R.id.imageView);
+            imageView.setVisibility(View.VISIBLE);
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    checkGlove();
+                    handler.postDelayed(this, 500);
+                }
+            }, 500);  //the time is in miliseconds
         }
         else if(mode.equals("quizzes")) {
-
+            ImageView imageView = findViewById(R.id.imageView);
+            imageView.setVisibility(View.INVISIBLE);
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    checkGlove();
+                    handler.postDelayed(this, 500);
+                }
+            }, 500);  //the time is in miliseconds
         }
         else if(mode.equals("interpret")) {
             final Handler handler = new Handler();
@@ -43,9 +62,15 @@ public class LearningActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     interpret();
-                    handler.postDelayed(this, 2000);
+                    handler.postDelayed(this, 500);
                 }
-            }, 2000);  //the time is in miliseconds
+            }, 500);  //the time is in miliseconds
+        }
+        else if(mode.equals("single")) {
+            ImageView imageView = findViewById(R.id.imageView);
+            String letterString = getIntent().getStringExtra("letter");
+            SignLetter letter = app.signLetters.get(letterString);
+            imageView.setImageResource(letter.imageID);
         }
 
         //testing purposes only
@@ -82,6 +107,8 @@ public class LearningActivity extends AppCompatActivity {
         }
         SignLetter letter = app.signLetters.get(letterOrder.get(position));
         imageView.setImageResource(letter.imageID);
+        TextView textView = findViewById(R.id.letterTextBox);
+        textView.setText(letter.getString());
     }
 
     public void goToMenu(View view) {
@@ -94,10 +121,32 @@ public class LearningActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.imageView);
         SignLetter letter = app.determineLetter();
         imageView.setImageResource(letter.imageID);
+        TextView textView = findViewById(R.id.letterTextBox);
+        textView.setText(letter.getString());
+    }
+
+    public void checkGlove() {
+        SignLetter letter = app.determineLetter();
+        if(letter.getString().equals(letterOrder.get(position))) {
+            ImageView imageView = findViewById(R.id.imageView);
+            imageView.setImageResource(R.drawable.checkmark);
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    getNextLetter(findViewById(R.id.nextLetter));
+                }
+            }, 2000);  //the time is in miliseconds
+        }
     }
 
     public void testGlove(View view) {
-        SignLetter letter = app.determineLetter();
+        checkGlove();
+    }
+
+    public void goToMenuL(View view) {
+        Intent myIntent = new Intent(this,MainActivity.class);
+        startActivity(myIntent);
     }
 
 }

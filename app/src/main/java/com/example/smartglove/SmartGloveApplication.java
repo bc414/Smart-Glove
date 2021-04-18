@@ -147,14 +147,14 @@ public class SmartGloveApplication extends Application {
         //Gary method
         //put the measurements for each letter then later we compare to find closest
         letterMappings = new ArrayList<>();
-        letterMappings.add(new LetterMapping("A",1,3,6,2,6));
+        letterMappings.add(new LetterMapping("A",328,236,185,183,204));
         letterMappings.add(new LetterMapping("B", 4, 1, 1, 1, 1));
         letterMappings.add(new LetterMapping("C", 2, 2, 2, 2, 2));
         letterMappings.add(new LetterMapping("D", 1, 1, 3, 3, 3));
         letterMappings.add(new LetterMapping("E", 4, 2, 4, 4, 4));
         letterMappings.add(new LetterMapping("F",2,3,1,1,1));
-        letterMappings.add(new LetterMapping("G",1,1,4,4,4,"Side"));
-        letterMappings.add(new LetterMapping("H",5,1,1,4,4,"Side"));
+        letterMappings.add(new LetterMapping("G",1,1,4,4,4));
+        letterMappings.add(new LetterMapping("H",5,1,1,4,4));
         letterMappings.add(new LetterMapping("I",2,3,6,2,1));
         letterMappings.add(new LetterMapping("J",2,3,6,2,1));
         letterMappings.add(new LetterMapping("K",1,1,1,2,2));
@@ -162,8 +162,8 @@ public class SmartGloveApplication extends Application {
         letterMappings.add(new LetterMapping("M",4,2,2,2,2));
         letterMappings.add(new LetterMapping("N",5,2,2,2,6));
         letterMappings.add(new LetterMapping("O",5,2,5,5,2));
-        letterMappings.add(new LetterMapping("P",1,1,1,2,2,"Down"));
-        letterMappings.add(new LetterMapping("Q",1,1,2,2,2,"Down"));
+        letterMappings.add(new LetterMapping("P",1,1,1,2,2));
+        letterMappings.add(new LetterMapping("Q",1,1,2,2,2));
         letterMappings.add(new LetterMapping("R",1,1,2,2,7));
         letterMappings.add(new LetterMapping("S",4,2,4,4,4));
         letterMappings.add(new LetterMapping("T",2,2,6,2,6));
@@ -182,6 +182,31 @@ public class SmartGloveApplication extends Application {
         ArrayList<Integer> imageIDs = new ArrayList<>();
         imageIDs.add(R.drawable.a);
         imageIDs.add(R.drawable.b);
+        imageIDs.add(R.drawable.c);
+        imageIDs.add(R.drawable.d);
+        imageIDs.add(R.drawable.e);
+        imageIDs.add(R.drawable.f);
+        imageIDs.add(R.drawable.g);
+        imageIDs.add(R.drawable.h);
+        imageIDs.add(R.drawable.i);
+        imageIDs.add(R.drawable.j);
+        imageIDs.add(R.drawable.k);
+        imageIDs.add(R.drawable.l);
+        imageIDs.add(R.drawable.m);
+        imageIDs.add(R.drawable.n);
+        imageIDs.add(R.drawable.o);
+        imageIDs.add(R.drawable.p);
+        imageIDs.add(R.drawable.q);
+        imageIDs.add(R.drawable.r);
+        imageIDs.add(R.drawable.s);
+        imageIDs.add(R.drawable.t);
+        imageIDs.add(R.drawable.u);
+        imageIDs.add(R.drawable.v);
+        imageIDs.add(R.drawable.w);
+        imageIDs.add(R.drawable.x);
+        imageIDs.add(R.drawable.y);
+        imageIDs.add(R.drawable.z);
+
 
         System.out.println(imageIDs);
 

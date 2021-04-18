@@ -14,14 +14,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void goToBluetooth(View view) {
+    public void goToCallibrate(View view) {
         Intent myIntent = new Intent(this,BluetoothActivity.class);
         startActivity(myIntent);
     }
 
-    public void goToLearning(View view) {
-        Intent myIntent = new Intent(this,GridviewAlph.class);
+    public void goToInterpret(View view) {
+        Intent myIntent = new Intent(this,LearningActivity.class);
         myIntent.putExtra("mode","interpret");
+        startActivity(myIntent);
+    }
+
+    public void goToLetterSelect(View view) {
+        Intent myIntent = new Intent(this,GridviewAlph.class);
+        startActivity(myIntent);
+    }
+
+    public void goToLearning(View view) {
+        Intent myIntent = new Intent(this,LearningActivity.class);
+        myIntent.putExtra("mode","learning");
+        startActivity(myIntent);
+    }
+
+    public void goToQuizzes(View view) {
+        Intent myIntent = new Intent(this,LearningActivity.class);
+        myIntent.putExtra("mode","quizzes");
         startActivity(myIntent);
     }
 }

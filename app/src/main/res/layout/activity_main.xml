@@ -9,29 +9,50 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="239dp"
+        android:layout_width="260dp"
         android:layout_height="60dp"
-        android:layout_marginTop="72dp"
-        android:onClick="goToBluetooth"
-        android:text="Bluetooth"
+        android:onClick="goToCallibrate"
+        android:text="Callibrate"
         app:backgroundTint="#36F47C"
+        app:layout_constraintBottom_toTopOf="@+id/button14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button13"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:onClick="goToLearning"
+        android:text="Learning - Random"
+        app:backgroundTint="#36F47C"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button14"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:onClick="goToInterpret"
+        android:text="Interpret"
+        app:backgroundTint="#36F47C"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="242dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="8dp"
-        android:onClick="goToLearning"
-        android:text="Learning"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:onClick="goToLetterSelect"
+        android:text="Learning - Select Letter"
         app:backgroundTint="#36F47C"
+        app:layout_constraintBottom_toTopOf="@+id/button13"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -48,14 +69,14 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="238dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:onClick="goToQuizzes"
         android:text="QUIZZES"
         app:backgroundTint="#36F47C"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
