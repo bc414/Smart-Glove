@@ -148,31 +148,31 @@ public class SmartGloveApplication extends Application {
         //put the measurements for each letter then later we compare to find closest
         letterMappings = new ArrayList<>();
         letterMappings.add(new LetterMapping("A",328,236,185,183,204));
-        letterMappings.add(new LetterMapping("B", 4, 1, 1, 1, 1));
-        letterMappings.add(new LetterMapping("C", 2, 2, 2, 2, 2));
-        letterMappings.add(new LetterMapping("D", 1, 1, 3, 3, 3));
-        letterMappings.add(new LetterMapping("E", 4, 2, 4, 4, 4));
-        letterMappings.add(new LetterMapping("F",2,3,1,1,1));
-        letterMappings.add(new LetterMapping("G",1,1,4,4,4));
-        letterMappings.add(new LetterMapping("H",5,1,1,4,4));
-        letterMappings.add(new LetterMapping("I",2,3,6,2,1));
-        letterMappings.add(new LetterMapping("J",2,3,6,2,1));
-        letterMappings.add(new LetterMapping("K",1,1,1,2,2));
-        letterMappings.add(new LetterMapping("L",1,1,6,2,6));
-        letterMappings.add(new LetterMapping("M",4,2,2,2,2));
-        letterMappings.add(new LetterMapping("N",5,2,2,2,6));
-        letterMappings.add(new LetterMapping("O",5,2,5,5,2));
-        letterMappings.add(new LetterMapping("P",1,1,1,2,2));
-        letterMappings.add(new LetterMapping("Q",1,1,2,2,2));
-        letterMappings.add(new LetterMapping("R",1,1,2,2,7));
-        letterMappings.add(new LetterMapping("S",4,2,4,4,4));
-        letterMappings.add(new LetterMapping("T",2,2,6,2,6));
-        letterMappings.add(new LetterMapping("U",4,1,1,4,4));
-        letterMappings.add(new LetterMapping("V",4,1,1,4,4));
-        letterMappings.add(new LetterMapping("W",4,1,1,1,4));
-        letterMappings.add(new LetterMapping("X",4,2,4,4,4));
-        letterMappings.add(new LetterMapping("Y",1,3,6,2,1));
-        letterMappings.add(new LetterMapping("Z",4,1,4,4,4));
+        letterMappings.add(new LetterMapping("B", 205, 408, 413, 453, 460));
+        letterMappings.add(new LetterMapping("C", 270, 281, 224, 239, 232));
+        letterMappings.add(new LetterMapping("D", 338, 513, 233, 280, 290));
+        letterMappings.add(new LetterMapping("E", 191, 225, 203, 200, 214));
+        letterMappings.add(new LetterMapping("F",311,271,420,449,431));
+        letterMappings.add(new LetterMapping("G",313,470,201,198,243));
+        letterMappings.add(new LetterMapping("H",289,487,438,224,263));
+        letterMappings.add(new LetterMapping("I",227,244,221,400,245));
+        letterMappings.add(new LetterMapping("J",227,244,221,400,245));
+        letterMappings.add(new LetterMapping("K",306,486,420,217,271));
+        letterMappings.add(new LetterMapping("L",339,456,209,241,262));
+        letterMappings.add(new LetterMapping("M",232,248,231,221,234));
+        letterMappings.add(new LetterMapping("N",245,238,208,224,269));
+        letterMappings.add(new LetterMapping("O",341,260,237,267,258));
+        letterMappings.add(new LetterMapping("P",343,444,318,246,297));
+        letterMappings.add(new LetterMapping("Q",403,424,215,238,278));
+        letterMappings.add(new LetterMapping("R",274,462,352,228,271));
+        letterMappings.add(new LetterMapping("S",213,202,208,208,215));
+        letterMappings.add(new LetterMapping("T",276,233,216,215,228));
+        letterMappings.add(new LetterMapping("U",250,448,345,215,230));
+        letterMappings.add(new LetterMapping("V",261,440,371,233,229));
+        letterMappings.add(new LetterMapping("W",284,446,369,188,397));
+        letterMappings.add(new LetterMapping("X",263,309,214,208,223));
+        letterMappings.add(new LetterMapping("Y",296,254,224,432,248));
+        letterMappings.add(new LetterMapping("Z",241,454,212,213,239));
     }
 
     /**
