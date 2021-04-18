@@ -4,27 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DD000000"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/button"
-        android:layout_width="160dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="205dp"
+        android:layout_width="239dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="72dp"
         android:onClick="goToBluetooth"
-        android:text="Callibrate"
+        android:text="Bluetooth"
+        app:backgroundTint="#36F47C"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="153dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="242dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="8dp"
         android:onClick="goToLearning"
         android:text="Learning"
+        app:backgroundTint="#36F47C"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
@@ -32,17 +37,24 @@
         android:id="@+id/textView"
         android:layout_width="160dp"
         android:layout_height="104dp"
+        android:layout_marginTop="124dp"
         android:text="SMART GLOVE"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="104dp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#C6FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="150dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="238dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="8dp"
         android:text="QUIZZES"
+        app:backgroundTint="#36F47C"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
