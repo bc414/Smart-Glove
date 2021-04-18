@@ -41,16 +41,16 @@ public class LearningActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     checkGlove();
-                    handler.postDelayed(this, 500);
+                    handler.postDelayed(this, 2000);
                 }
-            }, 500);  //the time is in miliseconds
+            }, 1000);  //the time is in miliseconds
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     app.request();
-                    handler.postDelayed(this, 500);
+                    handler.postDelayed(this, 2000);
                 }
-            }, 250);  //the time is in miliseconds
+            }, 0);  //the time is in miliseconds
         }
         else if(mode.equals("quizzes")) {
             ImageView imageView = findViewById(R.id.imageView);
@@ -60,16 +60,16 @@ public class LearningActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     app.request();
-                    handler.postDelayed(this, 500);
+                    handler.postDelayed(this, 2000);
                 }
-            }, 250);  //the time is in miliseconds
+            }, 0);  //the time is in miliseconds
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     checkGlove();
-                    handler.postDelayed(this, 500);
+                    handler.postDelayed(this, 2000);
                 }
-            }, 500);  //the time is in miliseconds
+            }, 1000);  //the time is in miliseconds
         }
         else if(mode.equals("interpret")) {
             final Handler handler = new Handler();
@@ -77,16 +77,16 @@ public class LearningActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     app.request();
-                    handler.postDelayed(this, 500);
+                    handler.postDelayed(this, 2000);
                 }
-            }, 250);  //the time is in miliseconds
+            }, 0);  //the time is in miliseconds
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     interpret();
-                    handler.postDelayed(this, 500);
+                    handler.postDelayed(this, 2000);
                 }
-            }, 500);  //the time is in miliseconds
+            }, 1000);  //the time is in miliseconds
         }
         else if(mode.equals("single")) {
             ImageView imageView = findViewById(R.id.imageView);
