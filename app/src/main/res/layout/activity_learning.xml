@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#FFFFFF"
     tools:context=".LearningActivity">
 
     <ImageView
@@ -24,6 +24,7 @@
         android:layout_marginBottom="52dp"
         android:onClick="getNextLetter"
         android:text="Next Letter"
+        android:textColor="#000000"
         app:backgroundTint="#36F47C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,6 +38,7 @@
         android:layout_marginBottom="32dp"
         android:onClick="testGlove"
         android:text="Test Glove"
+        android:textColor="#000000"
         app:backgroundTint="#36F47C"
         app:layout_constraintBottom_toTopOf="@+id/nextLetter"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,6 +50,7 @@
         android:layout_height="wrap_content"
         android:onClick="goToMenuL"
         android:text="Back"
+        android:textColor="#000000"
         app:backgroundTint="#36F47C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +62,7 @@
         android:layout_height="wrap_content"
         android:text="A"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textColor="#36F47C"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
