@@ -95,6 +95,8 @@ public class LearningActivity extends AppCompatActivity {
             String letterString = getIntent().getStringExtra("letter");
             SignLetter letter = app.signLetters.get(letterString);
             imageView.setImageResource(letter.imageID);
+            TextView textView = findViewById(R.id.letterTextBox);
+            textView.setText(letter.getString());
         }
 
         //testing purposes only
