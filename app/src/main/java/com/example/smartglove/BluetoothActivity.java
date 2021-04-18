@@ -35,28 +35,86 @@ public class BluetoothActivity extends AppCompatActivity {
         startActivity(myIntent);
     }
 
+    public void setErrorMessage() {
+        TextView valueBox = findViewById(R.id.valueBox);
+        valueBox.setText("You need to connect first.");
+    }
+
     public void requestData(View view) {
-        app.request();
+        try {
+            app.request();
+        }
+        catch(Exception e) {
+            setErrorMessage();
+        }
     }
 
     public void connect(View view) {
+
         app.connectBluetooth();
+        if(app.socket == null) {
+            TextView valueBox = findViewById(R.id.valueBox);
+            valueBox.setText("Socket didn't work!");
+        }
+        else {
+            TextView valueBox = findViewById(R.id.valueBox);
+            valueBox.setText("Socket works!");
+        }
+
     }
 
     public void test(View view) {
 
-        SignLetter letter = app.determineLetter();
-        String text;
-        if(letter == null) {
-            text = "No match";
+        try {
+            GloveReading gl = app.readGlove();
+            if(gl.flex == null) {
+                TextView valueBox = findViewById(R.id.valueBox);
+                valueBox.setText("You need to request data first.");
+                return;
+            }
+            SignLetter letter = app.determineLetter(gl);
+            String text;
+            if(letter == null) {
+                text = "No match";
+            }
+            else {
+                text = letter.getString();
+            }
+
+            TextView valueBox = findViewById(R.id.valueBox);
+            valueBox.setText(text);
         }
-        else {
-            text = letter.getString();
+        catch (NullPointerException e) {
+            setErrorMessage();
         }
 
-        TextView valueBox = findViewById(R.id.valueBox);
-        valueBox.setText(text);
     }
 
+    public void updateSideGyro(View view) {
+        try {
+            app.savedSideGyro = app.readGlove().palmGyro;
+        }
+        catch(Exception e) {
+            setErrorMessage();
+        }
+    }
+
+    public void updateUpGyro(View view) {
+        try {
+            app.savedUpGyro = app.readGlove().palmGyro;
+        }
+        catch(Exception e) {
+            setErrorMessage();
+        }
+    }
+
+    public void updateDownGyro(View view) {
+        try {
+            app.savedDownGyro = app.readGlove().palmGyro;
+        }
+        catch(Exception e) {
+            setErrorMessage();
+        }
+    }
 
 }

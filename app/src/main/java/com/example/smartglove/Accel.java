@@ -1,8 +1,8 @@
 package com.example.smartglove;
 
 public class Accel {
-    public double x, y, z;
-     public Accel(double x, double y, double z) {
+    public int x, y, z;
+     public Accel(int x, int y, int z) {
          this.x = x;
          this.y = y;
          this.z = z;

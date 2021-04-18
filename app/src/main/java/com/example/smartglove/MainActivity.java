@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToLearning(View view) {
         Intent myIntent = new Intent(this,LearningActivity.class);
+        myIntent.putExtra("mode","interpret");
         startActivity(myIntent);
     }
 }
